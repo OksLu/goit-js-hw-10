@@ -1,6 +1,6 @@
 import '../css/styles.css';
 import debounce from 'lodash.debounce';
-import Notiflix from 'notiflix';
+import Notiflix, { Notify } from 'notiflix';
 import fetchCountries from './fetchCountries';
 
 const DEBOUNCE_DELAY = 300;
@@ -13,6 +13,9 @@ inputEl.addEventListener(
   debounce(e => {
     const inputValue = inputEl.value.trim();
     removeMarkup();
+    if (inputValue === 0) {
+      return;
+    }
     fetchCountries(inputValue).then(data => {
       if (data.length > 10) {
         Notiflix.Notify.info(
