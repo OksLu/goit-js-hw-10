@@ -13,7 +13,7 @@ inputEl.addEventListener(
   debounce(e => {
     const inputValue = inputEl.value.trim();
     removeMarkup();
-    if (inputValue === 0) {
+    if (inputValue.length === 0) {
       return;
     }
     fetchCountries(inputValue).then(data => {
